@@ -2,21 +2,24 @@ module Meteo
   WEATHER_CODES = YAML.load_file("#{Rails.root}/app/services/weather_codes.yml")
 
   class Service
+    attr_reader :latitude, :longitude
 
-    def initialize
-
+    def initialize(latitude, longitude)
+      @latitude = latitude.to_d
+      @longitude = longitude.to_d
     end
 
     def perform
-      return {} if data.blank?
+      return nil if data.blank?
 
       { current: Current.new(data.current).to_h }.tap do |hash|
         data.daily.items.each do |item|
           hash[item.time] = Daily.new(item, data.daily.units).to_h
         end
       end
-
     end
+
+    private
 
     def data
       @data ||= OpenMeteo::Forecast.new.get(location:, variables:)
@@ -32,7 +35,7 @@ module Meteo
     end
 
     def location
-      OpenMeteo::Entities::Location.new(latitude: 52.52.to_d, longitude: 13.41.to_d)
+      OpenMeteo::Entities::Location.new(latitude:, longitude:)
     end
   end
 end

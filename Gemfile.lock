@@ -145,6 +145,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -301,6 +302,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  geocoder
   importmap-rails
   jbuilder
   open-meteo
