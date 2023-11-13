@@ -1,0 +1,7 @@
+<div>
+  <h2> <%= date.capitalize %> </h2>
+  <p><%= item.dig(:weather) %></p>
+  <p>Temperature <%= item.dig(:temperature) %></p>
+  <p>Wind <%= item.dig(:wind_speed) %></p>
+  <p>Precipitation <%= item.dig(:precipitation) %></p>
+</div>
