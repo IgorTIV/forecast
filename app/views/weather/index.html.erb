@@ -1,0 +1,5 @@
+<%= form_with url: weather_path, html: { id: 'weather', 'data-turbo' => "false" } do |form| %>
+  <%= form.label :query, "Weather forecast for:" %>
+  <%= form.text_field :zip_code, placeholder: 'Zip Code' %>
+  <%= form.submit "Search" %>
+<% end %>
