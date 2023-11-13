@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
 
   get '/weather' => 'weather#index'
 
   get '/weather/:zip_code' => 'weather#zip_code'
   post '/weather' => 'weather#zip_code'
+
+  root 'weather#index'
 end

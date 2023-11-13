@@ -1,5 +1,8 @@
 <div class="item">
   <h1><%= @address %></h1>
+  <% if @pulled_from_cache %>
+    <p class="warning">Result is pulled from cache.</p>
+  <% end %>
 </div>
 <% @forecast.each do |date, item| %>
   <%= render partial: 'item', locals: { item: item, date: date } %>
